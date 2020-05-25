@@ -1,5 +1,55 @@
 # Changelog
 
+## [v2.0.16](https://github.com/mitre/heimdall-lite/tree/v2.0.16) (2020-05-05)
+
+[Full Changelog](https://github.com/mitre/heimdall-lite/compare/v2.0.15...v2.0.16)
+
+**Implemented enhancements:**
+
+- Expand CAAT to cover report for all NIST tag entries [\#214](https://github.com/mitre/heimdall-lite/issues/214)
+- Fixed how wrappers are processed to avoid a control-linking edge case [\#220](https://github.com/mitre/heimdall-lite/pull/220) ([Mitriol](https://github.com/Mitriol))
+
+**Merged pull requests:**
+
+- remove login [\#218](https://github.com/mitre/heimdall-lite/pull/218) ([sjoshi10](https://github.com/sjoshi10))
+- Fixed CAAT to meet new requirements [\#217](https://github.com/mitre/heimdall-lite/pull/217) ([Mitriol](https://github.com/Mitriol))
+- Auth changes [\#212](https://github.com/mitre/heimdall-lite/pull/212) ([sjoshi10](https://github.com/sjoshi10))
+- Login dev [\#210](https://github.com/mitre/heimdall-lite/pull/210) ([robthew](https://github.com/robthew))
+
+## [v2.0.15](https://github.com/mitre/heimdall-lite/tree/v2.0.15) (2020-03-26)
+
+[Full Changelog](https://github.com/mitre/heimdall-lite/compare/v2.0.14...v2.0.15)
+
+**Merged pull requests:**
+
+- Fixed controls not properly handling null desc blocks [\#204](https://github.com/mitre/heimdall-lite/pull/204) ([Mitriol](https://github.com/Mitriol))
+
+## [v2.0.14](https://github.com/mitre/heimdall-lite/tree/v2.0.14) (2020-03-17)
+
+[Full Changelog](https://github.com/mitre/heimdall-lite/compare/v2.0.12...v2.0.14)
+
+## [v2.0.12](https://github.com/mitre/heimdall-lite/tree/v2.0.12) (2020-03-15)
+
+[Full Changelog](https://github.com/mitre/heimdall-lite/compare/v2.0.11...v2.0.12)
+
+**Implemented enhancements:**
+
+- Add node-semver to the project [\#182](https://github.com/mitre/heimdall-lite/issues/182)
+- release-2.0 [\#176](https://github.com/mitre/heimdall-lite/issues/176)
+- Re-introduce nist tag "pill" visuals [\#133](https://github.com/mitre/heimdall-lite/issues/133)
+- Investigate second implementation method for infinite scroll [\#92](https://github.com/mitre/heimdall-lite/issues/92)
+- Add a hover information modal that shows the capability definition as reference [\#72](https://github.com/mitre/heimdall-lite/issues/72)
+- Add tooltips to NIST tag chips [\#190](https://github.com/mitre/heimdall-lite/pull/190) ([lukemalinowski](https://github.com/lukemalinowski))
+
+**Closed issues:**
+
+- Make ContextualizedControl wrap HDFControl, instead of it being one or the other [\#122](https://github.com/mitre/heimdall-lite/issues/122)
+
+**Merged pull requests:**
+
+- Added splunk support [\#201](https://github.com/mitre/heimdall-lite/pull/201) ([Mitriol](https://github.com/Mitriol))
+- Reworked AWS S3 dialogue to be more user friendly, and have proper MFA support [\#192](https://github.com/mitre/heimdall-lite/pull/192) ([Mitriol](https://github.com/Mitriol))
+
 ## [v2.0.11](https://github.com/mitre/heimdall-lite/tree/v2.0.11) (2019-11-18)
 
 [Full Changelog](https://github.com/mitre/heimdall-lite/compare/v2.0.6...v2.0.11)

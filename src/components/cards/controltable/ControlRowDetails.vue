@@ -37,7 +37,7 @@
             <v-divider></v-divider>
             <br />
             <v-clamp class="pb-2" autoresize :max-lines="2">
-              <template slot="default">{{ control.data.desc.trim() }}</template>
+              <template slot="default">{{ main_desc }}</template>
               <template slot="after" slot-scope="{ toggle, expanded, clamped }">
                 <v-icon
                   fab
@@ -110,7 +110,7 @@ import Prism from "vue-prism-component";
 Vue.component("prism", Prism);
 
 import "prismjs/components/prism-ruby.js";
-import { ContextualizedControl } from "../../../store/data_store";
+import { context } from "inspecjs";
 
 interface Detail {
   name: string;
@@ -122,7 +122,7 @@ interface Detail {
 const ControlRowDetailsProps = Vue.extend({
   props: {
     control: {
-      type: Object, // Of type ContextualizedControl
+      type: Object, // Of type context.ContextualizedControl
       required: true
     }
   }
@@ -145,8 +145,16 @@ export default class ControlRowDetails extends ControlRowDetailsProps {
   expanded: boolean = false;
 
   /** Typed getter aroun control prop */
-  get _control(): ContextualizedControl {
+  get _control(): context.ContextualizedControl {
     return this.control;
+  }
+
+  get main_desc(): string {
+    if (this._control.data.desc) {
+      return this._control.data.desc.trim();
+    } else {
+      return "No description";
+    }
   }
 
   // Checks if an element has been clamped
@@ -211,8 +219,9 @@ export default class ControlRowDetails extends ControlRowDetailsProps {
         name: "Fix Text",
         value: c.hdf.descriptions.fix || c.data.tags.fix
       }
-    ];
+    ].filter(v => v.value); // Get rid of nulls
   }
+
   zebra(ix: number): string {
     return ix % 2 ? "" : "zebra-table";
   }

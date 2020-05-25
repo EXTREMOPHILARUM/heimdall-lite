@@ -24,13 +24,9 @@ export type InspecFile = {
   /** The filename that this file was uploaded under. */
   filename: string;
 };
-export function isInspecFile(f: any): f is InspecFile {
-  const t = f as InspecFile;
-  return t.filename !== undefined && t.unique_id !== undefined;
-}
 
 /** Represents a file containing an Inspec Execution output */
-export type ExecutionFile = InspecFile & { execution: parse.AnyExec };
+export type EvaluationFile = InspecFile & { execution: parse.AnyExec };
 /** Represents a file containing an Inspec Profile (not run) */
 export type ProfileFile = InspecFile & { profile: parse.AnyProfile };
 
@@ -85,6 +81,7 @@ class InspecIntakeModule extends VuexModule {
    */
   @Action
   async loadText(options: TextLoadOptions): Promise<Error | null> {
+    console.log("Load Text: " + options.text);
     // Fetch our data store
     const data = getModule(DataModule, Store);
 
@@ -93,6 +90,9 @@ class InspecIntakeModule extends VuexModule {
     try {
       result = parse.convertFile(options.text);
     } catch (e) {
+      console.log(
+        `Failed to convert file ${options.filename} due to error "${e}".`
+      );
       return new Error(
         `Failed to convert file ${options.filename} due to error "${e}".`
       );
@@ -101,6 +101,7 @@ class InspecIntakeModule extends VuexModule {
     // Determine what sort of file we (hopefully) have, then add it
     if (result["1_0_ExecJson"]) {
       // Handle as exec
+      console.log("is Execution");
       let execution = result["1_0_ExecJson"];
       execution = Object.freeze(execution);
       let reportFile = {
@@ -108,17 +109,21 @@ class InspecIntakeModule extends VuexModule {
         filename: options.filename,
         execution
       };
+      console.log("addExecution");
       data.addExecution(reportFile);
     } else if (result["1_0_ProfileJson"]) {
       // Handle as profile
+      console.log("is Profile");
       let profile = result["1_0_ProfileJson"];
       let profileFile = {
         unique_id: options.unique_id,
         filename: options.filename,
         profile
       };
+      console.log("addProfile");
       data.addProfile(profileFile);
     } else {
+      console.log("is Nothing");
       return new Error("Couldn't parse data");
     }
     return null;

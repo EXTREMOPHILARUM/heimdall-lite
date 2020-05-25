@@ -3,10 +3,14 @@ import Router from "vue-router";
 import Results from "@/views/Results.vue";
 import Compare from "@/views/Compare.vue";
 import Landing from "@/views/Landing.vue";
+import Auth from "@/views/Auth.vue";
+import Login from "@/views/Login.vue";
+import Signup from "@/views/Signup.vue";
 
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/results/:id",
@@ -17,6 +21,11 @@ export default new Router({
       path: "/compare",
       name: "compare",
       component: Compare
+    },
+    {
+      path: "/",
+      name: "home",
+      component: Landing
     },
     /*
     {
@@ -31,9 +40,19 @@ export default new Router({
     },
     */
     {
-      path: "/",
+      path: "/home",
       name: "home",
       component: Landing
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: Signup
     },
     {
       path: "*",
